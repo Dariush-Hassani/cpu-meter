@@ -1,5 +1,7 @@
+import HomeComponent from "../components/home";
+
 const Home = () => {
-  return <div className=" dark:text-white text-black; dark:bg-black">Home</div>;
+  return <HomeComponent />;
 };
 
 export default Home;

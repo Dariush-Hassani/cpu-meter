@@ -19,7 +19,7 @@ export const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
     );
   }, [theme.themeMode]);
   return (
-    <div className="p-2">
+    <div className="p-2 h-full">
       <div className="flex h-[54px] w-full gap-2">
         <div className="w-full border-solid border-1 rounded-lg flex items-center justify-between p-2 dark:bg-back-dark dark:border-border-dark">
           <div className="flex gap-3 items-center">
@@ -29,7 +29,11 @@ export const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
             <div className="flex gap-3 m-2">
               {menuValues.map((item, _i) => {
                 return item.children?.length ? (
-                  <Menu as="div" className="relative inline-block">
+                  <Menu
+                    key={`menu-${_i}`}
+                    as="div"
+                    className="relative inline-block"
+                  >
                     <MenuButton
                       style={{ border: "none", outline: "none" }}
                       className="cursor-pointer inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold dark:text-text-primary-dark"
@@ -44,7 +48,7 @@ export const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
                       {item.children.map((subItem, _j) => {
                         return (
                           <div className="py-1">
-                            <MenuItem>
+                            <MenuItem key={`sub-menu-${_i}${_j}`}>
                               <NavLink
                                 to={subItem.url}
                                 className="block px-4 py-2 text-sm dark:text-text-primary-dark hover:dark:text-text-secondary-dark"
@@ -60,6 +64,7 @@ export const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
                 ) : (
                   <NavLink
                     to={item.url}
+                    key={`menu-${_i}`}
                     className="block px-4 py-2 font-semibold text-sm dark:text-text-primary-dark hover:dark:text-text-secondary-dark"
                   >
                     {item.title}
@@ -68,7 +73,7 @@ export const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
               })}
             </div>
           </div>
-          <div
+          <button
             className="flex items-center justify-center w-[30px] h-[30px] cursor-pointer border-1 rounded-2xl  dark:border-text-primary-dark"
             onClick={() => {
               changeTheme(
@@ -83,7 +88,7 @@ export const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
             ) : (
               <MoonIcon className="size-5 dark:dark:text-text-primary-dark" />
             )}
-          </div>
+          </button>
         </div>
         <div className="min-w-[400px] max-w-[400px] text-sm justify-center border-solid border-1 rounded-lg text-main dark:bg-back-dark dark:border-border-dark flex items-center gap-2 p-2 box-border">
           <div className="text-text-primary-dark font-medium">
@@ -97,7 +102,7 @@ export const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
           <div className="text-text-primary-dark">High</div>
         </div>
       </div>
-      {children}
+      <div style={{ height: "calc(100% - 63px)" }}>{children}</div>
     </div>
   );
 };

@@ -15,3 +15,12 @@ a.active {
   color: var(--color-primary-blue-dark);
   font-weight: 500;
 }
+
+body{
+  height: 100dvh;
+  min-height: 730px;
+}
+
+#root{
+  height: 100%;
+}

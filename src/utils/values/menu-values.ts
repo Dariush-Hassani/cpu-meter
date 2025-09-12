@@ -11,7 +11,7 @@ export const menuValues = [
         url: paths.settings.history,
       },
       {
-        title: "Thresholds2",
+        title: "Thresholds",
         url: paths.settings.thresholds,
       },
     ],
