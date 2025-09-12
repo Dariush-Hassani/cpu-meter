@@ -1,0 +1,17 @@
+@config "../tailwind.config.ts"; 
+@import "tailwindcss";
+
+@theme {
+  --color-back-dark: #0F0F0F;
+  --color-border-dark: #3D3B3B;
+  --color-text-primary-dark:#fff;
+  --color-text-secondary-dark:#999CA5;
+  --color-primary-blue-dark:#2CAFFE;
+  --color-primary-yellow-dark:#EAB839;
+  --color-primary-red-dark:#E24D42;
+}
+
+a.active {
+  color: var(--color-primary-blue-dark);
+  font-weight: 500;
+}
